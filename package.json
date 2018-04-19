@@ -1,0 +1,27 @@
+{
+  "name": "raspberry-console",
+  "version": "0.0.0",
+  "description": "A Reaspberry Controller",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jiawei686/raspberry-console.git"
+  },
+  "keywords": [
+    "raspberry"
+  ],
+  "author": "Jiawei",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jiawei686/raspberry-console/issues"
+  },
+  "homepage": "https://github.com/jiawei686/raspberry-console#readme",
+  "dependencies": {
+    "material-ui": "^0.20.0",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2"
+  }
+}
