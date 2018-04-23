@@ -10,14 +10,24 @@
             </template>
           </card>
           <card>
-            <h5 class="card-title">当前路径&nbsp;&nbsp;{{position}}</h5>
+            <h5 class="card-title">上传文件</h5>
             <br>
-            <button type="submit" class="btn btn-info float-left" @click="goBack">
+            <b-form action="http://172.18.159.146/upload" method="POST" enctype="multipart/form-data">
+              <b-form-file v-model="file" name="file" :state="Boolean(file)" placeholder="Choose a file..."></b-form-file>
+              <b-form-input name="dir_path" :value="position" v-show="false" ></b-form-input>
+              <b-form-input name="op" value="upload" v-show="false" ></b-form-input>
+              <button type="submit" class="btn btn-primary btn-sm float-left btn-upload">
+                Upload
+              </button>
+            </b-form>
+          </card>
+          <card>
+            <h5 class="card-title">当前路径&nbsp;&nbsp;Home{{position}}</h5>
+            <br>
+            <button type="submit" class="btn btn-primary float-left" @click="goBack">
               Go Back
             </button>
-            <button type="submit" class="btn btn-info btn-fill float-left" @click="goBack">
-              Upload
-            </button>
+            
             <div class="all-icons">
               <div class="row">
                 <div v-for="file of files" :key="file.type" class="font-icon-list col-lg-2 col-md-3 col-sm-4 col-6">
@@ -106,5 +116,8 @@
   }
   .btn{
     margin-right: 30px;
+  }
+  .btn-upload{
+    margin-top: 20px;
   }
 </style>

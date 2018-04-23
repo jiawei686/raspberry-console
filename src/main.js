@@ -11,10 +11,15 @@ import routes from './routes/routes'
 //http service
 import VueResource from 'vue-resource'
 
+//Bootstrap4-Vue2
+import BootstrapVue from 'bootstrap-vue'
+
+
 // plugin setup
 Vue.use(VueRouter)
 Vue.use(LightBootstrap)
 Vue.use(VueResource)
+Vue.use(BootstrapVue);
 
 // configure router
 const router = new VueRouter({
