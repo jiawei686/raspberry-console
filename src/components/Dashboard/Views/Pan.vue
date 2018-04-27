@@ -20,7 +20,7 @@
             <h5 class="card-title">上传文件</h5>
             <br>
             <b-form @submit.prevent="submitFile" action="http://172.18.159.146/upload" method="POST" enctype="multipart/form-data">
-              <b-form-file v-model="file" name="file" :value="uploadFile" :state="Boolean(file)" placeholder="Choose a file..."></b-form-file>
+              <b-form-file v-model="file" name="file"  @change="changeImage($event)" :state="Boolean(file)" placeholder="Choose a file..."></b-form-file>
               <b-form-input name="dir_path" :value="position" v-show="false" ></b-form-input>
               <b-form-input name="op" value="upload" v-show="false" ></b-form-input>
               <button type="submit" class="btn btn-primary btn-sm float-left btn-upload">
@@ -33,17 +33,16 @@
           <card>
             <h5 class="card-title">当前路径&nbsp;&nbsp;Home{{position}}</h5>
             <br>
-            <button type="submit" class="btn btn-primary float-left" @click="goBack">
+            <button type="submit" class="btn btn-primary" @click="goBack">
               Go Back
             </button>
-            
-            
+            <br>
             <div class="all-icons">
               <div class="row">
                 <div v-for="(file, index) in files" :key="file.name" class="font-icon-list col-lg-2 col-md-3 col-sm-4 col-6">
                   <transition name="item-hover">
                     <div class="font-icon-detail icon-frame" @click="itemClick(index)" @mouseenter="itemHover(index)" @mouseleave="itemLeave(index)">
-                      <p v-b-modal.modalPrevent v-if="files[index].hover" class="deleteIcon" @click.stop="deleteFile(index)">X</p>
+                      <p v-b-modal.modalPrevent v-if="files[index].hover" class="deleteIcon" @click.stop="deleteFileSetIndex(index)">X</p>
                       <i class="nc-icon iconClass" :class="iconClass(index)"></i>
                       <p class="file-name">{{file.name}}</p>
                     </div>
@@ -52,8 +51,8 @@
               </div>
             </div>
           </card>
-        </div>
 
+        </div>
       </div>
     </div>
   </div>
@@ -68,7 +67,9 @@
       return {
         files: [],
         file: false,
+        uploadFileName: '',
         uploadFile: '',
+        delIndex: '',
         position: '/',
         iconClass(index) {
           return {
@@ -87,18 +88,19 @@
 
       // 模块加载
       freshItems() {
-        this.$http.get('http://172.18.159.146/getlist?path=' + this.position).then(response => {
+        this.$http.get('http://172.18.159.146/getlist?path=' + this.position)
+        .then(response => {
           this.files = response.body.map((item, index) => {
             item.hover = false;
             return item;
           });
-          // alert(JSON.stringify(response.body));
         }, response => {
           // alert(3);
           alert('Eden的树莓派炸了，请重试');
-          alert(response.body);
+          alert(JSON.stringify(response));
         })
       },
+
 
       // 点击文件/文件夹
       itemClick(index) {
@@ -107,22 +109,30 @@
           this.freshItems();
         }
         else {
-          location.href = 'http://172.18.159.146/RJpan/' + this.position + this.files[index].name
+          location.href = 'http://172.18.159.146/RJpan' + this.position + (this.position == '/' ? '' : '/') + this.files[index].name
         }
       },
 
+      //处理用户上传图片
+      changeImage(e) {
+        var file = e.target.files[0]
+        this.uploadFile = e.target.files[0]
+      },
       //发送文件
       submitFile() {
         let formData = new FormData();
         formData.append('op', 'upload');
         formData.append('dir_path', this.position);
         formData.append('file', this.uploadFile);
-        this.$http.post("http://172.18.159.146/upload",formData
-        ).then(response => {
-          console.log(response);
+        this.$http.post("http://172.18.159.146/upload",formData,{
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
         }).then(response => {
-          console.log(response);
-        })
+          this.freshItems();
+        },response => {
+          alert(JSON.stringify(response));
+        });
       },
 
       //后退操作
@@ -134,16 +144,23 @@
         this.freshItems();
       },
 
-      deleteFile(index) {
+      deleteFile() {
         // alert(this.position + (this.position == '/' ? '' : '/') + file.name);
+        const params = {
+          'op': 'delfile',
+          'file_path': this.position + (this.position == '/' ? '' : '/') + this.files[this.delIndex].name
+        }
         this.$http.get('http://172.18.159.146/op',{
-          op: 'delfile',
-          file_path: this.position + (this.position == '/' ? '' : '/') + this.files[index].name
+          params: params
         }).then(response => {
-          alert(response);
-        }).then(response => {
-          alert(response)
+          // alert('终于删除成功，累死Eden的树莓派了');
+          this.freshItems();
+        },response => {
+          console.log(JSON.stringify(response));
         });
+      },
+      deleteFileSetIndex(index) {
+        this.delIndex = index;
       },
 
       handleDelete() {

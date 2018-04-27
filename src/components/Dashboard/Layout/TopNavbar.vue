@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg">
+  <!-- <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Dashboard</a>
       <button type="button"
@@ -62,7 +62,9 @@
         </ul>
       </div>
     </div>
-  </nav>
+  </nav> -->
+  <div>
+  </div>
 </template>
 <script>
   export default {

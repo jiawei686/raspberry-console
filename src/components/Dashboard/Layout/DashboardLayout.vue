@@ -2,10 +2,10 @@
   <div class="wrapper">
     <side-bar>
       <mobile-menu slot="content"></mobile-menu>
-      <sidebar-link to="/admin/overview">
+      <!-- <sidebar-link to="/admin/overview">
         <i class="nc-icon nc-chart-pie-35"></i>
         <p>Dashboard</p>
-      </sidebar-link>
+      </sidebar-link> -->
       <sidebar-link to="/admin/pan">
         <i class="nc-icon nc-cloud-upload-94"></i>
         <p>中大网盘</p>
