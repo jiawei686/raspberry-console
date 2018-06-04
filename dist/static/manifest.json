@@ -3,9 +3,10 @@
     "short_name":"Raspberry",
     "description": "Raspberry App",
     "start_url": "/",
+    "scope": "/",
     "icons": [
       {
-          "src": "/static/img/vue-logo.png",
+          "src": "./img/vue-logo.png",
           "type": "image/png",
           "sizes": "144x144"
       }
