@@ -1,13 +1,13 @@
 {
-    "name": "中大网盘",
-    "short_name":"中大网盘",
-    "description": "中大网盘app",
+    "name": "Raspberry",
+    "short_name":"Raspberry",
+    "description": "Raspberry App",
     "start_url": "/",
     "icons": {
-      "src": "static/img/favicon.png"
+      "src": "/static/img/favicon.png"
     },
     "developer": {
-      "name": "pqj",
+      "name": "jiawei",
       "url": ""
     },
     "display": "standalone",
