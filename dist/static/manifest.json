@@ -1,0 +1,21 @@
+{
+    "name": "Raspberry",
+    "short_name":"Raspberry",
+    "description": "Raspberry App",
+    "start_url": "/",
+    "icons": {
+      "src": "/static/img/favicon.png"
+    },
+    "developer": {
+      "name": "jiawei",
+      "url": ""
+    },
+    "display": "standalone",
+    "background_color": "#287fc5",
+    "theme_color": "#313131",
+    "permissions": {
+        "desktop-notification": {
+          "description": "Needed for creating system notifications."
+        }
+      }
+}  
