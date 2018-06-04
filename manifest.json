@@ -1,0 +1,21 @@
+{
+    "name": "中大网盘",
+    "short_name":"中大网盘",
+    "description": "中大网盘app",
+    "start_url": "/",
+    "icons": {
+      "src": "static/img/favicon.png"
+    },
+    "developer": {
+      "name": "pqj",
+      "url": ""
+    },
+    "display": "standalone",
+    "background_color": "#287fc5",
+    "theme_color": "#313131",
+    "permissions": {
+        "desktop-notification": {
+          "description": "Needed for creating system notifications."
+        }
+      }
+}  

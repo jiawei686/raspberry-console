@@ -1,24 +1,24 @@
 # Raspberry Console
 
-> raspberry dashboard based on light bootstrap dashboard UI template + vue-router
-
-This project is a vue version based on  [Light bootstrap dashboard](https://www.creative-tim.com/product/light-bootstrap-dashboard)
-designed for vue js. The dashboard includes Bootstrap 4, vue-router, chartist, google-maps and several other plugins/components.
-
-
-## :rocket: Getting started
-
-This Console is built on top of Bootstrap 4, Vuejs and Vue-router. To get started do the following steps:
-1. Download the project
-2. Make sure you have node.js (https://nodejs.org/en/) installed
-3. Type `npm install` in the source folder where `package.json` is located
-4. Type `npm run dev` to start the development server
-
-The repo uses [vue-cli](https://github.com/vuejs/vue-cli) scaffolding which takes care of the development setup with webpack and all the necessary modern tools to make web development faster and easier.
+> 树莓派管理系统，基于vue2、bootstrap4、koa2
 
 
 
-## :cloud: Build Setup
+## :rocket: 重构日志
+
+1. 网盘基本功能重构(2018.4.22)
+2. 增加了网盘上传功能(2018.4.23)
+3. 增加了动画效果(2018.4.23)
+4. 网盘功能更新，上传/删除功能修复(2018.4.24)
+5. README 更新(2018.4.25)
+6. 精简前端，完成了网盘基本功能(2018.4.27)
+7. 接入koa2(2018.6.4)
+
+
+
+
+
+## :cloud: 使用方法
 
 ### install dependencies
 `npm install`
@@ -31,17 +31,8 @@ The repo uses [vue-cli](https://github.com/vuejs/vue-cli) scaffolding which take
 
 `npm run unit`
 ### run and watch unit tests
+
 `npm run unit:watch`
 
-## :clipboard: Contribution guide
-* `npm install` or `yarn install`
 
 
-
-
-
-[CHANGELOG]: ./CHANGELOG.md
-[LICENSE]: ./LICENSE.md
-[version-badge]: https://img.shields.io/badge/version-1.0.0-blue.svg
-
-[]: https://img.shields.io/badge/license-MIT-blue.svg
