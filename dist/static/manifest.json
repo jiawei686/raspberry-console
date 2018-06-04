@@ -3,15 +3,19 @@
     "short_name":"Raspberry",
     "description": "Raspberry App",
     "start_url": "/",
-    "icons": {
-      "src": "/static/img/favicon.png"
-    },
+    "icons": [
+      {
+          "src": "/static/img/favicon.png",
+          "type": "image/png",
+          "sizes": "144x144"
+      }
+    ],
     "developer": {
       "name": "jiawei",
       "url": ""
     },
     "display": "standalone",
-    "background_color": "#287fc5",
+    "background_color": "#313131",
     "theme_color": "#313131",
     "permissions": {
         "desktop-notification": {
